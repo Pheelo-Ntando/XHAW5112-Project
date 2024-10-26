@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Empowering the Nation - apply</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+        
+            <header><img src="_images/ETN.jfif" alt="Skan Lupa" width="200" height="200">
+                <nav id="topLinks">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About us</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li class="currentPage">Apply</li>
+                        <li><a href="contact.html">Contact</a></li>   
+                    </ul>
+                </nav>
+            </header>
+
+
+            <div class="checkout-wrapper">
+                <h1>Checkout</h1>
+                <p class="checkout-info">
+                    Please select the course you want to study at Empowering the Nation<br>
+                    1 selected course = no discount<br>
+                    2 selected courses = 5% discount<br>
+                    3 selected courses = 10% discount<br>
+                    More than 3 selected courses = 15% discount<br>
+                </p>
+                <p class="checkout-info">6 Weeks Courses</p>
+                <div class="course-selection">
+                    <div class="course-shop" id="course-shop">
+                        <div class="course-box" data-price="300">
+                            <img src="_images/ch1.jpg" alt="">
+                            <div class="course-content">
+                                <h3>Child Minding</h3>
+                                <h4>Price: R750</h4>
+                                <p class="selection-unit">Select: <input type="checkbox" class="course-checkbox" data-price="750" onchange="updateTotal()"></p>
+                            </div> 
+                        </div>
+                        <div class="course-box" data-price="600">
+                            <img src="_images/c2.jpg" alt="">
+                            <div class="course-content">
+                                <h3>Cooking</h3>
+                                <h4>Price: R750</h4>
+                                <p class="selection-unit">Select: <input type="checkbox" class="course-checkbox" data-price="750" onchange="updateTotal()"></p>
+                            </div> 
+                        </div>
+                        <div class="course-box" data-price="400">
+                            <img src="_images/gm2.jpg" alt="">
+                            <div class="course-content">
+                                <h3>Garden Maintenance</h3>
+                                <h4>Price: R750</h4>
+                                <p class="selection-unit">Select: <input type="checkbox" class="course-checkbox" data-price="750" onchange="updateTotal()"></p>
+                            </div> 
+                        </div>
+                        <p class="checkout-info">6 Months Courses</p>
+                        <div class="course-box" data-price="400">
+                            <img src="_images/fa.jpeg" alt="">
+                            <div class="course-content">
+                                <h3>First Aid</h3>
+                                <h4>Price: R1500</h4>
+                                <p class="selection-unit">Select: <input type="checkbox" class="course-checkbox" data-price="1500" onchange="updateTotal()"></p>
+                            </div> 
+                        </div>
+                        <div class="course-box" data-price="400">
+                            <img src="_images/s1.jpg" alt="">
+                            <div class="course-content">
+                                <h3>Sewing</h3>
+                                <h4>Price: R1500</h4>
+                                <p class="selection-unit">Select: <input type="checkbox" class="course-checkbox" data-price="1500" onchange="updateTotal()"></p>
+                            </div> 
+                        </div>
+                        <div class="course-box" data-price="400">
+                            <img src="_images/l2.jpg" alt="">
+                            <div class="course-content">
+                                <h3>Landscaping</h3>
+                                <h4>Price: R1500</h4>
+                                <p class="selection-unit">Select: <input type="checkbox" class="course-checkbox" data-price="1500" onchange="updateTotal()"></p>
+                            </div> 
+                        </div>
+                        <div class="course-box" data-price="400">
+                            <img src="_images/ls1.jpg" alt="">
+                            <div class="course-content">
+                                <h3>Life Skills</h3>
+                                <h4>Price: R1500</h4>
+                                <p class="selection-unit">Select: <input type="checkbox" class="course-checkbox" data-price="1500" onchange="updateTotal()"></p>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="summary-bar">
+                        <p><span>Subtotal</span> <span id="subtotal">R0.00</span></p>
+                        <hr>
+                        <p><span>Discount</span> <span id="discount">0%</span></p>
+                        <hr>
+                        <p><span>Courses Selected</span> <span id="courses-selected">0</span></p>
+                        <hr>
+                        <p><span>Total </span> <span id="total">R0.00</span></p>
+                    </div>
+                </div>
+            </div>
+            <script>
+                function updateTotal() {
+                    const checkboxes = document.querySelectorAll('.course-checkbox');
+                    let subtotal = 0;
+                    let selectedCount = 0;
+
+                    checkboxes.forEach(checkbox => {
+                        if (checkbox.checked) {
+                            const price = parseFloat(checkbox.getAttribute('data-price'));
+                            subtotal += price;
+                            selectedCount++;
+                        }
+                    });
+
+                    let discountPercent = 0;
+                    if (selectedCount === 2) discountPercent = 5;
+                    else if (selectedCount === 3) discountPercent = 10;
+                    else if (selectedCount > 3) discountPercent = 15;
+
+                    const discount = (subtotal * discountPercent) / 100;
+                    const total = subtotal - discount;
+
+                    document.getElementById('subtotal').textContent = `R${subtotal.toFixed(2)}`;
+                    document.getElementById('discount').textContent = `${discountPercent}%`;
+                    document.getElementById('courses-selected').textContent = selectedCount;
+                    document.getElementById('total').textContent = `R${total.toFixed(2)}`;
+                }
+            </script>
+
+
+            
+            <footer id="Footer">
+                <nav id="bottomLinks">
+                    <ul>
+                        <li><a href="Home.html">Home</a></li>
+                        <li><a href="courses.html">courses</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="about.html">About us</a></li>
+                        <li>Apply</li>
+                    </ul>
+                </nav>
+                <p>
+                    &copy; Empowering the Nation | Powered by "MPS's web dev" 
+                </p>
+            </footer>
+        </div>
+    </body>    
+</html>
